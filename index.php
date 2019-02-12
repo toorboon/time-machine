@@ -13,16 +13,16 @@
       if (!(isset($_SESSION['user_id']))) { 
     ?>
       <div class="d-flex flex-column align-items-center mt-5">
-      <div class="container">
-        <div class="jumbotron text-center text-dark">
-          <h1 class="display-4">Welcome to the <br> Time-Machine!</h1>
-          <p class="lead">This is a simple web application, where you can handle your served time at work!</p>
-          <hr class="my-2">
-          <button class="btn btn-outline-info my-2" type="button" data-toggle="modal" data-target="#signup_user">Sign up here!</button>
-          <p>User-Login: horst pw: test</p>
-          <p>Admin-Login: marco pw: test</p>
+        <div class="container">
+          <div class="jumbotron text-center text-dark">
+            <h1 class="display-4">Welcome to the <br> Time-Machine!</h1>
+            <p class="lead">This is a simple web application, where you can handle your served time at work!</p>
+            <hr class="my-2">
+            <button class="btn btn-outline-info my-2" type="button" data-toggle="modal" data-target="#signup_user">Sign up here!</button>
+            <p>User-Login: horst pw: test</p>
+            <p>Admin-Login: marco pw: test</p>
+          </div>
         </div>
-      </div>
       </div>
     <div class="navbar fixed-top navbar-dark bg-dark">
       <div class="d-flex">

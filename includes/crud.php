@@ -13,4 +13,17 @@ if (isset($_POST['action'])){
 		// echo $startDate;
 		echo $result;
 	}
+	if($_POST['checkDatabase']){
+		$resultArray[];
+		$resultArray = $object->checkDatabase();
+		print_r($resultArray);
+	}
+	//Therefore I first need to fetch the rowId!
+	/*if ($_POST['action'] == 'insertStopDate'){
+		$rowId = $_POST['rowId'];
+		$stopDate = $_POST['stopDate'];
+		$result = $object->setStopDate($stopDate);
+		
+		echo $result;
+	}*/
 }

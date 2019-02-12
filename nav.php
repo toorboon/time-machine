@@ -1,6 +1,6 @@
-<nav class="w-100 navbar navbar-expand-md bg-dark navbar-dark mt-2">
+<nav class="w-100 navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <a id="employer" class="navbar-brand" href="#"><?php echo $_SESSION['employer'];?></a>
+  <a id="employer" class="navbar-brand" href="index.php">Time-Machine</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -24,6 +24,10 @@
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="#">Create New User</a>
+      </li> 
+      <li class="nav-item">
+        <!-- This will be a list where you can save the items you want to buy in grocery stores. Also think about making it cross user available. -->
+        <a class="nav-link" href="#">Grocery-list</a>
       </li> 
       <li class="nav-item">
         <a id="logout" name="logout-submit" class="nav-link" href="#">Logout</a>
