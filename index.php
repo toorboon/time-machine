@@ -44,7 +44,7 @@
           }
         }
       ?>
-      </div>
+    </div>
       <form class="d-flex form-inline" action="includes/login.inc.php" method="POST" accept-charset="utf-8">
         <input class="mx-1" type="text" name="email" placeholder="Username/E-Mail..." value="<?php if($login){echo $login;} ?>">
         <input class="mx-1" type="password" name="pwd" placeholder="Password...">
@@ -59,8 +59,8 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="popper/popper.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="ext_ressources/popper/popper.js"></script>
+    <script src="ext_ressources/bootstrap/js/bootstrap.min.js"></script>
     <?php 
       if (isset($_SESSION['user_id'])) { 
     ?>

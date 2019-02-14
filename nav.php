@@ -23,7 +23,7 @@
         <a class="nav-link" href="#">Change Employer</a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="#">Create New User</a>
+        <a class="nav-link" data-toggle="modal" data-target="#signup_user" href="#">Create New User</a>
 <!-- Use this for calling the modal as required
             <button class="btn btn-outline-info my-2" type="button" data-toggle="modal" data-target="#signup_user">Sign up here!</button>
   -->           

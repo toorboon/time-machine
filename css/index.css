@@ -6,6 +6,7 @@ body, html {
 
 #picturebox {
   background-image: url("../img/time-machine.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background-position: center center; }
 
 /*# sourceMappingURL=index.css.map */
