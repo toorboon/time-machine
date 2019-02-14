@@ -23,7 +23,8 @@
   </div>
   
   <div class="w-100 ">
-    <?php include("nav.php"); ?>
+    <?php include("nav.php"); 
+          include("signup.php");?>
   </div>
   
   <div id="picturebox" class="h-100 bg-danger">

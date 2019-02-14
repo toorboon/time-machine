@@ -24,6 +24,9 @@
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="#">Create New User</a>
+<!-- Use this for calling the modal as required
+            <button class="btn btn-outline-info my-2" type="button" data-toggle="modal" data-target="#signup_user">Sign up here!</button>
+  -->           
       </li> 
       <li class="nav-item">
         <!-- This will be a list where you can save the items you want to buy in grocery stores. Also think about making it cross user available. -->

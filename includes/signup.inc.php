@@ -7,11 +7,11 @@ if(isset($_POST['signup-submit'])){
 
 	$connection = $connection ?? null;
 	if ($connection){
-		$conn = $connection->connectDB();
+		$conn = $connection->connectDBprocedural();
 	} else {
 		$connection = new Database();
-		$conn = $connection->connectDB();
-	}
+		$conn = $connection->connectDBprocedural();
+	} 
 
 	$username = $_POST['uid'];
 	$email = $_POST['mail'];

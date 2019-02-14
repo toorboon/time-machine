@@ -1,1 +1,6 @@
 includes/dbconnect.inc.php
+db/*
+bootstrap/*
+jquery/*
+popper/*
+ext_ressources/*
