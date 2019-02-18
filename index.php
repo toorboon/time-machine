@@ -17,7 +17,11 @@
           <div class="jumbotron text-center text-dark">
             <h1 class="display-4">Welcome to the <br> Time-Machine!</h1>
             <p class="lead">This is a simple web application, where you can handle your served time at work!</p>
-            
+            <hr>
+            <p>Test me with these login credentials!</p>
+            <div>
+              <span>login: horst</span><br>
+              <span>pw: test</span>
           </div>
         </div>
       </div>
@@ -61,12 +65,10 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="ext_ressources/popper/popper.js"></script>
     <script src="ext_ressources/bootstrap/js/bootstrap.min.js"></script>
-    <?php 
-      if (isset($_SESSION['user_id'])) { 
-    ?>
-    <script src="js/main.js" type="text/javascript" charset="utf-8" async defer></script>
-    <?php
-      }
-    ?>
+    <?php if (isset($_SESSION['user_id'])) { ?>
+      <script src="js/main.js" type="text/javascript" charset="utf-8" async defer></script>
+    <?php } if (isset($_SESSION['admin'])){ ?>
+      <script src="js/signup.js" type="text/javascript" charset="utf-8" async defer></script>
+    <?php } ?>
   </body>
 </html>

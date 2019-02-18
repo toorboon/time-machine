@@ -44,7 +44,7 @@ if (isset($_POST['login-submit'])) {
 				} else if ($pwdCheck == true) {
 					session_start();
 					$_SESSION['user_id'] = $row['id'];
-					$_SESSION['first_name'] = $row['first_name'];
+					$_SESSION['username'] = ucwords($row['username']);
 					$_SESSION['employer'] = $row['employer'];
 					if ($row['role'] == 'admin'){
 						$_SESSION['admin'] = 1;

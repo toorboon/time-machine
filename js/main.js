@@ -1,76 +1,108 @@
 $(document).ready(function(){
   
-  //set inital variables for running the programme
-    // makes sure the sessionId check in start_button works
-    sessionId = undefined;
-    breakIndicator = false;
-    x = undefined;
+  initApplication();
 
-    //needed for the clock in the right upper corner
-    setInterval(function() {
-        var date = new Date();
-        $('#date-element').html(
-            (date.getDate()) + "." + (date.getMonth()+1) + "." + date.getFullYear() + " | " +  date.getHours() + ":" + (( date.getMinutes() < 10 ? "0" : "" ) + date.getMinutes()) + ":" + (( date.getSeconds() < 10 ? "0" : "" ) + date.getSeconds())
-            );
-      }, 500)
-    ;
-    //check the database if an open process is still running on init
-    checkSession();
+  function initApplication(){
+    // needed for the clock in the right upper corner
+      setInterval(function() {
+          var date = new Date();
+          $('#date-element').html(
+              (date.getDate()) + "." + (date.getMonth()+1) + "." + date.getFullYear() + " | " +  date.getHours() + ":" + (( date.getMinutes() < 10 ? "0" : "" ) + date.getMinutes()) + ":" + (( date.getSeconds() < 10 ? "0" : "" ) + date.getSeconds())
+              );
+        }, 500)
+      ;
 
-  //set event handler for buttons
-    //this button starts the counter
-    $('#start_button').on('click', function(){
-      if (!(sessionId)) {
-        //Write the start counter to the database
-        var action = 'startSession';
-        
-        controlSession(action, sessionId);
-        
-      } else {
-        swal('Nothing to do!', 'Process is already running!','error');
-      }
-    });
+    // navbar links set event handlers
+      // this link starts the time-machine application
+      $('#time-machine').on('click', function(){
+        renderLink('renderTimeMachine');
+      });
 
-    //this button stops the counter
-    $('#stop_button').on('click', function(){
-      console.log('sessionId stopbutton: ' + sessionId);
-      if (sessionId) {
-        // Write the stop_date to the database and finish that instance
-        var action = 'stopSession';
-       
-        controlSession(action, sessionId);
-        
-      } else {
-        swal('Nothing to do!', 'No process is running!','error');
-      }
-    });
+      // this link renders the overview for the time-machine
+      $('#overview').on('click', function(){
+        renderLink('renderOverview');
+      });
 
-     //this button pauses the counter
-    $('#break_button').on('click', function(){
-      if (sessionId) {
-        //get the start_break pause the actual running counter
-        var action = 'pauseSession';
-        
-        controlSession(action, sessionId);
-        
-      } else {
-        swal('Nothing to do!', 'No session is running, cannot break nothing!','error');
-      }
-    });
+      // logs you off the application
+      $('#logout').on('click', function(){
+        $.ajax({
+          url:"includes/logout.inc.php",
+          method: "post",
+          success:function(response)
+            {    
+              window.location.replace('index.php');
+            }
+          }); 
+      });
+  }
 
-//navbar links
-  //logs you off the actual session
-  $('#logout').on('click', function(){
-    $.ajax({
-      url:"includes/logout.inc.php",
-      method: "post",
-      success:function(response)
-        {    
-          window.location.replace('index.php');
+  function initTimeMachine(){
+    //set inital variables for running the programme
+      // makes sure the sessionId check in start_button works
+      sessionId = undefined;
+      breakIndicator = false;
+      x = undefined;
+
+    //set event handler for buttons
+      //this button starts the counter
+      $('#start_button').on('click', function(){
+        if (!(sessionId)) {
+          //Write the start counter to the database
+          var action = 'startSession';
+          
+          controlSession(action, sessionId);
+          
+        } else {
+          swal('Nothing to do!', 'Process is already running!','error');
         }
-      
+      });
+
+      //this button stops the counter
+      $('#stop_button').on('click', function(){
+        console.log('sessionId stopbutton: ' + sessionId);
+        if (sessionId) {
+          // Write the stop_date to the database and finish that instance
+          var action = 'stopSession';
+         
+          controlSession(action, sessionId);
+          
+        } else {
+          swal('Nothing to do!', 'No process is running!','error');
+        }
+      });
+
+       //this button pauses the counter
+      $('#break_button').on('click', function(){
+        if (sessionId) {
+          //get the start_break pause the actual running counter
+          var action = 'pauseSession';
+          
+          controlSession(action, sessionId);
+          
+        } else {
+          swal('Nothing to do!', 'No session is running, cannot break nothing!','error');
+        }
+      });
+  }
+
+  function renderLink(action){
+    $.ajax({
+        url:"includes/render.php",
+        method: "post",
+        data:{action:action}
+      }).done(function(response){   
+        if (action == 'renderTimeMachine'){
+          $('#application').html(response);
+          initTimeMachine();
+          // check the database if an open process is still running on init
+          checkSession();
+        } else {
+          $('#application').html(response);
+        }
+      }).fail(function(response){
+        swal('Application error!', 'Cannot load time-machine!','error');
       }); 
-  });
+  }
 
   function checkSession(){
     //check PHP, if a running counter is in there

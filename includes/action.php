@@ -20,7 +20,7 @@ if (isset($_POST['action'])){
 		echo json_encode($resultArray);
 	}*/
 
-	// if you have no running session at all, it will be called here
+	// if you have no running session at all, you will start a new one with setting a start-date
 	if($_POST['action'] == 'startSession'){
 		$startDate = $_POST['date'];
 		$result = $object->setStartDate($startDate);
